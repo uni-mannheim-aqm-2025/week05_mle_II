@@ -1,8 +1,8 @@
 ---
 title: "AQM Week 05 -- More Maximum Likelihood"
 author: 
-  - Oliver Rittmann
-date: "March 14, 2024"
+  - Domantas Undzėnas, Muhammad Muhammad
+date: "March 13|14, 2025"
 output:
   html_document:
     toc: true
@@ -637,26 +637,25 @@ To estimate bootstrapped standard errors, we need to:
 
 mle_bs <- function(data) {
   # 1) draw the bootstrap sample
-  bs_samp <- data[sample(1:nrow(data), replace = TRUE),]
+  bs_samp <-
   
   # 2) extract y and X from the data frame
-  y <- bs_samp[,1]
-  X <- as.matrix(cbind(1, bs_samp[, c(2, 3)]))
+  y <- 
+  X <- 
   
   
   # 3) maximum likelihood estimation
   res <- optim(
-    startvals,
-    ll_linear,
-    y = y,
-    X = X,
-    control = list(fnscale = -1),
-    method = "L-BFGS-B",
-    hessian = F
+    
+    
+    
+    
+    
+    
   ) 
   
   # 4) return point estimates
-  bs_samp_coefs <- res$par
+  bs_samp_coefs <- 
   
   return(bs_samp_coefs)
   

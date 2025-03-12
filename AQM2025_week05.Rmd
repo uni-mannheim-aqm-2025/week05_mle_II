@@ -254,7 +254,7 @@ In the very last line of the above command, we tell `optim()` to return the Hess
 ?optim
 ```
 
-How come that the optimization algorithm so easily comes back with an estimate for the Hessian? Many optimization algorithms, like the one we use a lot, BFGS, do not try to maximize a function itself, but maximize an *approximation* of the function. We have seen that the Taylor series expansion provides such approximations by relying on the Gradient vector and the Hessian matrix. Therefore, the algorithm needs to calculate an estimate of the Hessian anyway. The algorithms that do not rely on derivatives can also just calculate the Hessian post factum, once the optimization is complete. 
+How come that the optimization algorithm so easily comes back with an estimate for the Hessian? Many optimization algorithms, like the one we use a lot, BFGS, do not try to maximize a function itself, but maximize an *approximation* of the function. [In fact, log-likelihood functions can be approximated by quadratic functions](https://strimmerlab.github.io/publications/lecture-notes/MATH20802/quadratic-approximation-and-normal-asymptotics.html?fbclid=IwAR0bviB6wKSfvUqW5Zip36MTU6eHbp-x-wrtezDNA8Cq3dDj_IxC1CJ3tD4). We have seen that the Taylor series expansion provides such approximations by relying on the Gradient vector and the Hessian matrix. Therefore, the algorithm needs to calculate an estimate of the Hessian anyway. The algorithms that do not rely on derivatives can also just calculate the Hessian post factum, once the optimization is complete. 
 
 Now we want to implement it to work for us.
 
@@ -365,7 +365,7 @@ $$
 $$
 
 ```{r Exercise I: From the Hessian to Standard Errors, eval=FALSE, collapse=TRUE}
-mle_se <- sqrt(diag(solve(-res$hessian)))
+mle_se <- ???
 ```
 
 
@@ -391,7 +391,7 @@ That has been really simple for a change. One problem with it though is that the
 Let's set up some more (but less) fake data to further inspect that problem.
 
 ```{r MLE and small samples... I}
-set.seed(1234)
+set.seed(20250314)
 
 # we simulate 50 instead of 500 observations
 n <- 50 
@@ -629,7 +629,7 @@ To estimate bootstrapped standard errors, we need to:
 # To speed things up:
 # Here are the steps that the function should execute:
 
-# 1) to sample from the data: data[sample(1:nrow(data), replace = TRUE),]
+# 1) to sample from the data
 # 2) extract y and X from the data frame so that you
 #    can parse it to optim()
 # 3) estimate the linear model with optim()
